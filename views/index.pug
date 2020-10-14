@@ -6,7 +6,7 @@ block content
         p!= __('index.intro')
         p!= __('index.link-preamble')
 
-    a.down-button.down-button--hidden.scroll-link(href='#shop')
+    a.down-button.down-button--hidden(data-scroll-to='#shop')
         i.ri-shopping-cart-fill
         i.ri-arrow-down-s-line
 
@@ -22,7 +22,7 @@ block content
             locale: 'en_US',
             prefix: 'https://shop.spreadshirt.se',
             baseId: 'spreadshop',
-            startToken: 'all',
+            startToken: '#all',
             swipeMenu: true
         };
 

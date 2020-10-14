@@ -4,7 +4,7 @@ const express = require('express');
 const Redis = require('ioredis');
 const cache = require('express-redis-cache')({
     client: new Redis(process.env.REDIS_URL),
-    prefix: 'kalle.surf'
+    prefix: 'kallesurf'
 });
 
 const ensureHttps = require('../lib/middleware/ensure-https');
