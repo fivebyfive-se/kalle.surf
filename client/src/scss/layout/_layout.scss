@@ -7,22 +7,34 @@
         color: var(--color-text);
         min-height: 100vh;
     }
+    article {
+        width: 100%;
+        @include mobile-only {
+            @include padding(.5);
+        }
+    }
     header, main, footer {
         margin: 0 auto;
         width: 100%;
-        max-width: get-setting(grid, max-width);
+        @include desktop-only {
+            max-width: get-setting(grid, max-width);
+        }
     }
 
     header {
         @extend %flex,
             %flex--justify-space-between,
             %flex--align-flex-end;
+        @include mobile-only {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     .header {
         @extend %flex,
             %flex--justify-flex-start,
-            %flex--align-flex-end;
+            %flex--align-center;
 
         &__logo {
             svg {
@@ -53,6 +65,9 @@
 
             &--highlight {
                 color: var(--color-primary);
+                @include mobile-only {
+                    display: none;
+                }
             }
             &__icon {
                 @include margin-right(.5);
