@@ -12,9 +12,14 @@ html(lang=lang, data-theme=theme)
         link(rel='stylesheet', href='/css/critical.css')
     body
         header
+            h1.header
+                .header__logo
+                    include partials/logo.svg.pug
+                .header__title kalle.surf
             nav.nav
-                +nav-link('#about', __('menu.about'), 'information')
-                +nav-link('#shop', __('menu.shop'), 'vip-crown')
+                +nav-link('#about', __('menu.about'), 'user-smile-line')
+                +nav-link('#shop', __('menu.shop'), 'shopping-cart-line')
+                +nav-link('https://fivebyfive.se/', __('menu.5x5'), 'building-4-line', 'highlight')(target='_blank', rel='noopener nofollow')
 
         article
             main

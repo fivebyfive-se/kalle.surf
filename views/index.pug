@@ -1,26 +1,30 @@
 extends _layout.pug
 
 block content
-    section.intro
-        h1= __('index.title')
+    section.about#about
+        h2= __('index.title')
         p= __('index.intro')
 
         p
             = __('index.link-preamble')
             a(href='https://www.fivebyfive.se/') Fivebyfive
 
-
-    section.shop
+    section.shop#shop
+        h2= __('index.shop-title')
         #spreadshop
             a(href='https://shop.spreadshirt.se/kallesurf')
-        script.
-            var spread_shop_config = {
-                shopName: 'kallesurf',
-                locale: 'se_SE',
-                prefix: 'https://shop.spreadshirt.se',
-                baseId: 'spreadshop'
-            };
-  
-        script(type="text/javascript", src="https://shop.spreadshirt.se/shopfiles/shopclient/shopclient.nocache.js").
-  
-  
+
+
+
+
+    script.
+        var spread_shop_config = {
+            shopName: 'kallesurf',
+            locale: '!{language === 'en-US' ? 'en_US' : 'se_SE'}',
+            prefix: 'https://shop.spreadshirt.se',
+            baseId: 'spreadshop'
+        };
+
+    script(type="text/javascript", src="https://shop.spreadshirt.se/shopfiles/shopclient/shopclient.nocache.js")
+
+    script(src='/js/main.js')

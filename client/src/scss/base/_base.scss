@@ -8,14 +8,23 @@
         --color-primary: #{get-color(primary)};
         --color-secondary: #{get-color(secondary)};
         --color-tertiary: #{get-color(tertiary)};
+
+        // @media (prefers-color-scheme: light) {
+        //     --color-text: #{get-color(background)};
+        //     --color-text-secondary: #{get-color(background-secondary)};
+        //     --color-background: #{get-color(text)};
+        //     --color-background-secondary: #{get-color(text-secondary)};
+        // }
     }
-    
-    html body {
-        padding: 0;
-        margin: 0;
-        
-        * {
-            box-sizing: border-box !important;
+    html {
+        scroll-behavior: smooth;
+        body {
+            padding: 0;
+            margin: 0;
+            
+            * {
+                box-sizing: border-box !important;
+            }
         }
     }
 }

@@ -1,0 +1,13 @@
+{
+	"menu": {
+		"about": "About me",
+		"shop": "Buy stuff!",
+		"5x5": "Fivebyfive"
+	},
+	"index": {
+		"title": "Hi! I'm Kalle",
+		"intro": "I design and develop things at Fivebyfive, but also do various kinds of art -- including digital illustrations and paintings. Some of these you can buy below.",
+		"link-preamble": "If you'd rather hire me to create your next website or app or flyer, visit",
+		"shop-title": "Buy stuff!"
+	}
+}

@@ -26,13 +26,14 @@
 
         &__logo {
             svg {
-                fill: var(--color-text);
+                fill: var(--color-background);
                 width: 8rem;
                 height: 8rem;
             }
         }
         &__title {
-            color: var(--color-text);
+            font-weight: 666;
+            color: var(--color-tertiary);
         }
     }
     .nav {
@@ -46,9 +47,7 @@
             @extend %flex,
                  %flex--inline,
                 %flex--justify-center,
-                %flex--align-center,
-                %font--monospace,
-                %font--large;
+                %flex--align-center;
 
             color: var(--color-tertiary);
 
