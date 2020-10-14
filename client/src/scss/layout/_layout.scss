@@ -7,76 +7,164 @@
         color: var(--color-text);
         min-height: 100vh;
     }
-    article {
+    article, footer {
         width: 100%;
         @include padding(.5, 1);
     }
     header, main, footer {
-        margin: 0 auto;
-        @include desktop-only {
+    }
+    main {
+        margin-top: 25vh;
+        section.about {
+            height: 50vh;
+        }
+        section {
+            margin-bottom: 30vh;
+        }
+    }
+    @include desktop-only {
+        main, footer {
             max-width: get-setting(grid, max-width);
         }
     }
 
-    header {
-        @extend %flex,
-            %flex--justify-space-between,
-            %flex--align-flex-end;
-        @include mobile-only {
-            flex-direction: column;
-            align-items: center;
-        }
-    }
-
-    .header {
+    .site-header {
+        $self: &;
+        @include position-fixed($top: 0, $left: 0);
         @extend %flex,
             %flex--justify-flex-start,
             %flex--align-center;
 
-        &__logo {
-            svg {
-                fill: var(--color-background);
-                width: 8rem;
-                height: 8rem;
+        @include mobile-only {
+            flex-direction: column;
+        }
+
+        &__button {
+            @include margin-x(1);
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            width: 4rem;
+            height: 2rem;
+
+            &:before, &:after {
+                @include position-absolute($left: 0);
+                content: '';
+                width: 100%;
+                height: .5rem;
+                background-color: var(--color-text);
+            }
+            &:before {
+                top: 0;
+            }
+            &:after {
+                bottom: 0;
             }
         }
-        &__title {
-            font-weight: 666;
-            color: var(--color-tertiary);
-        }
-    }
-    .nav {
-        @extend %flex,
-            %flex--justify-flex-start,
-            %flex--align-flex-end;
-
-        @include padding(1);
-
-        &__item {
+        &__menu {
             @extend %flex,
-                 %flex--inline,
-                %flex--justify-center,
-                %flex--align-center;
-
-            color: var(--color-tertiary);
-
-            &--highlight {
-                color: var(--color-primary);
-                @include mobile-only {
-                    display: none;
-                }
-            }
-            &__icon {
-                @include margin-right(.5);
-            }
-            + .nav__item {
-                @include margin-left(1);
-            }
+                %flex--justify-flex-start,
+                %flex--align-flex-start;
+    
+            @include padding-y(1);
+    
+            opacity: 0;
+            transform: translateY(-100%);
         }
     }
 
+    .fade-in {
+        opacity: 0;
+        transform: translateY(15vh);
+        visibility: hidden;
+        transition: opacity .6s ease-out, transform .3s ease-out;
+    }
 }
 
 @include non-critical {
+    .down-button {
+        @extend %flex, %flex--column;
+        @include position-fixed($bottom: size(1), $left: get-setting(grid, max-width) / 2, $z-index: 15);
+        color: var(--color-tertiary);
+        transition: opacity .8s ease-in-out, 
+            transform .6s ease-out;
+        i {
+            @extend %font--large;
+        }
+        &--hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+    }
 
+    .fade-in--visible {
+        opacity: 1;
+        transform: none;
+        visibility: visible;
+    }
+    .site-header {
+        $self: &;
+        width: 100%;
+
+        &, &__menu, &__button:before, &__button:after {
+            transition: all .3s ease-in-out;
+        }
+
+        &__button {
+            &:before, &:after {
+                transform-origin: center center;
+                box-shadow: 2px 2px 4px 2px var(--color-background);
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+        &__menu {
+            .nav__item {
+                @extend %flex,
+                     %flex--inline,
+                    %flex--justify-center,
+                    %flex--align-center;
+    
+                color: var(--color-tertiary);
+    
+                &--highlight {
+                    color: var(--color-primary);
+                    @include mobile-only {
+                        display: none;
+                    }
+                }
+                &__icon {
+                    @include margin-right(.5);
+                }
+                + .nav__item {
+                    @include margin-left(1);
+                }
+            }
+        }
+
+        &--show-menu {
+            background-color: var(--color-background);
+            z-index: 10;
+
+            #{$self}__menu {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            #{$self}__button {
+                &:before, &:after {
+                    box-shadow: none;
+                }
+                &:before {
+                    top: 50%;
+                    transform: rotate(-25deg) translateY(-50%);
+                }
+                &:after {
+                    bottom: 50%;
+                    transform: rotate(25deg) translateY(50%);
+                }
+            }
+        }
+    }
 }

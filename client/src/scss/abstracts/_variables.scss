@@ -18,7 +18,7 @@ $settings: (
     color: (
         text:  #fffefe,
         text-secondary: #eee,
-        background: #555,
+        background: #222,
         background-secondary: #333,
 
 
@@ -50,11 +50,11 @@ $settings: (
             )
         ),
         size: (
-            base: 2, // * 1rem
-            large: 3,
-            x-large: 4,
-            xx-large: 5,
-            xxx-large: 6,
+            base: 3, // * 1rem
+            large: 5,
+            x-large: 5,
+            xx-large: 8,
+            xxx-large: 16,
             small: 1.75,
             x-small: 1.5,
             xx-small: 1.25,

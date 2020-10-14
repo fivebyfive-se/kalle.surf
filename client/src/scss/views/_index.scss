@@ -1,15 +1,11 @@
 @include critical {
     section.about {
-        @include margin-bottom(4);
-        a {
-            @include margin-left(.5);
-        }
+        a { font-weight: 666; }
     }
 }
-
 @include non-critical {
     #sprd-main {
-        --sprd-main1: var(--color-background);
+        --sprd-main1: var(--color-background-secondary);
         --sprd-main2: var(--color-primary);
         --sprd-main3: var(--color-text);
         --sprd-sub2: var(--color-background-secondary);
@@ -18,27 +14,57 @@
         @extend %font--base,
             %font--body;
 
-        background-color: var(--color-background) !important;
+        background-color: var(--color-background-secondary) !important;
         color: var(--color-text) !important;
+        position: relative;
 
         h1, h2, .sprd__caption, .sprd-startpage-teaser__subcaption {
             font-family: get-font-family(body) !important;
             font-weight: 666 !important;
             color: var(--color-text) !important;
+            text-align: left !important;
         }
         #sprd-header-container {
             display: block;
         }
 
         .customPageBackground, .sprd-bg-m1 {
-            background-color: var(--color-background) !important;
+            background-color: var(--color-background-secondary);
             color: var(--color-text) !important;
         }
+        .sprd-header__burgerbutton,
+        .sprd-header__title,
+        .sprd-promo-header,
+        .sprd-breadcrumb,
+        .sprd-department-filter__openmenu,
+        .sprd-listpage__header,
         .sprd-info-footer {
             display: none;
         }
         .sprd-service-footer {
-            border-top: 2px solid var(--color-background-secondary);
+            background-color: var(--color-background);
         }
+
+        #sprd-basket {
+            position: fixed;
+            bottom: size(1);
+            z-index: 5;
+            @include desktop-only {
+                left: get-setting(grid, max-width);
+            }
+            @include mobile-only {
+                right: size(1);
+            }
+        }
+        .sprd-product-list__empty-shop {
+            text-align: left;
+        }
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@900&display=swap');
+    .fivebyfive { 
+        color: #F26B5B;
+        font-family: 'Spartan', 'Futura', 'Futura PT', 'Beteckna', sans-serif; 
+        font-weight: 900; 
     }
 }

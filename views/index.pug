@@ -2,19 +2,18 @@ extends _layout.pug
 
 block content
     section.about#about
-        h2= __('index.title')
-        p= __('index.intro')
+        h1= __('index.title')
+        p!= __('index.intro')
+        p!= __('index.link-preamble')
 
-        p
-            = __('index.link-preamble')
-            a(href='https://www.fivebyfive.se/') Fivebyfive
+    a.down-button.down-button--hidden.scroll-link(href='#shop')
+        i.ri-shopping-cart-fill
+        i.ri-arrow-down-s-line
 
     section.shop#shop
-        h2= __('index.shop-title')
-        #spreadshop
+        h2.fade-in= __('index.shop-title')
+        #spreadshop.fade-in
             a(href='https://shop.spreadshirt.se/kallesurf')
-
-
 
 
     script.
@@ -22,7 +21,9 @@ block content
             shopName: 'kallesurf',
             locale: '!{language === 'en-US' ? 'en_US' : 'se_SE'}',
             prefix: 'https://shop.spreadshirt.se',
-            baseId: 'spreadshop'
+            baseId: 'spreadshop',
+            startToken: 'all',
+            swipeMenu: true
         };
 
     script(type="text/javascript", src="https://shop.spreadshirt.se/shopfiles/shopclient/shopclient.nocache.js")
