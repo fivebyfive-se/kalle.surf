@@ -16,24 +16,15 @@ $settings: (
     ),
 
     color: (
-        text:  #ECEEEB,
-        text-secondary: #F8FAF7,
-        background: #0E1C1D,
-        background-secondary: #060C0D,
+        text:  #fffefe,
+        text-secondary: #f9f3f3,
+        background: #999999,
+        background-secondary: #333,
 
 
-        primary:#BF5E81,
-        secondary:  #03A6A6,
-        tertiary: #C49068,
-
-        primary-darker:  #401F2B,
-        primary-lighter: #CC648A,
-
-        secondary-darker: #026666,
-        secondary-lighter: #05F2F2,
-
-        tertiary-darker: #856146,
-        tertiary-lighter: #D1996F,
+        primary:#bf5fbf,
+        secondary:  #77bb66,
+        tertiary: #BF9F73,
 
         success: #218A49,
         error: #8A332F
@@ -44,26 +35,18 @@ $settings: (
 
     font: (
         family: (
-            body: "'IBM Plex Sans', sans-serif",
-            heading: "'IBM Plex Sans', sans-serif",
-            monospace: "'IBM Plex Mono', monospace"
+            body: "'Mulish', sans-serif",
+            heading: "'Mulish', sans-serif",
+            monospace: "monospace"
         ),
         style: (
-            italic: (
-                weight: 400,
-                style: 'italic'
-            ),
             normal: (
-                weight: 400,
+                weight: 333,
                 style: 'normal'
             ),
             bold: (
-                weight: 700,
+                weight: 666,
                 style: 'normal'
-            ),
-            bold-italic: (
-                weight: 700,
-                style: 'italic'
             )
         ),
         size: (

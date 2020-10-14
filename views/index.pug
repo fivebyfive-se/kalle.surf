@@ -1,19 +1,26 @@
 extends _layout.pug
 
 block content
-    section.splash
-        h1.splash__title 
-            = __('index.splash.title') 
-            span.spinner(data-spinner= __('index.splash.spinner'))
+    section.intro
+        h1= __('index.title')
+        p= __('index.intro')
 
-        p.splash__cta
-            a.button(href='/page/pricing')
-                i.ri-play-line
-                = __('index.splash.call-to-action')
+        p
+            = __('index.link-preamble')
+            a(href='https://www.fivebyfive.se/') Fivebyfive
 
-    section.offer
-        h2.offer__title
-            = __('index.offer.title')
-        p.offer__text
-            = __('index.offer.text')
 
+    section.shop
+        #spreadshop
+            a(href='https://shop.spreadshirt.se/kallesurf')
+        script.
+            var spread_shop_config = {
+                shopName: 'kallesurf',
+                locale: 'se_SE',
+                prefix: 'https://shop.spreadshirt.se',
+                baseId: 'spreadshop'
+            };
+  
+        script(type="text/javascript", src="https://shop.spreadshirt.se/shopfiles/shopclient/shopclient.nocache.js").
+  
+  

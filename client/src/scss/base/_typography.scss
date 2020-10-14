@@ -27,15 +27,6 @@
     }
     strong, b {
         @extend %font--bold;
-        em, i {
-            @extend %font--bold-italic;
-        }
-    }
-    em, i {
-        @extend %font--italic;
-        strong, b {
-            @extend %font--bold-italic;
-        }
     }
 
 
@@ -53,8 +44,7 @@
             %font--bold;
     }
     h5, .heading5 { 
-        @extend %font--large,
-            %font--bold-italic;
+        @extend %font--large;
     }
 
     pre, code, .mono {
