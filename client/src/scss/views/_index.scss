@@ -24,6 +24,9 @@
             color: var(--color-text) !important;
             text-align: left !important;
         }
+        h2 {
+            font-size: get-font-size(large) * 1rem !important;
+        }
         #sprd-header-container {
             display: block;
         }

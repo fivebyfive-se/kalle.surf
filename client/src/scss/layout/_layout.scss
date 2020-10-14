@@ -86,9 +86,14 @@
     .down-button {
         @extend %flex, %flex--column;
         @include position-fixed($bottom: size(1), $left: get-setting(grid, max-width) / 2, $z-index: 15);
-        color: var(--color-tertiary);
+        color: var(--color-primary);
         transition: opacity .8s ease-in-out, 
             transform .6s ease-out;
+        opacity: .2;
+        &:hover {
+            opacity: 1;
+            color: var(--color-primary);
+        }
         i {
             @extend %font--large;
         }
@@ -128,7 +133,6 @@
                     %flex--align-center;
     
                 color: var(--color-tertiary);
-    
                 &--highlight {
                     color: var(--color-primary);
                     @include mobile-only {
