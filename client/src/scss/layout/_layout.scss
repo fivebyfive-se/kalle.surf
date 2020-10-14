@@ -9,13 +9,10 @@
     }
     article {
         width: 100%;
-        @include mobile-only {
-            @include padding(.5);
-        }
+        @include padding(.5, 1);
     }
     header, main, footer {
         margin: 0 auto;
-        width: 100%;
         @include desktop-only {
             max-width: get-setting(grid, max-width);
         }
@@ -53,7 +50,7 @@
             %flex--justify-flex-start,
             %flex--align-flex-end;
 
-        @include padding-y(1);
+        @include padding(1);
 
         &__item {
             @extend %flex,
