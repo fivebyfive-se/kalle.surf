@@ -1,2 +1,3 @@
-# node-start
-Baseline node+pug project with often-used middleware. Including Procfile for Heroku.
+# kalle.surf
+
+Simple personal site for @raisanen. Minimalist wrapper around a spreadshirt site. 
