@@ -14,14 +14,26 @@
     header, main, footer {
     }
     main {
-        margin-top: 25vh;
-        section.about {
-            height: 50vh;
+        @include desktop-only {
+            margin-top: 25vh;
+            .page-section {
+                margin-bottom: 25vh;
+
+                &--about {
+                    height: 50vh;
+                }
+            }
         }
-        section {
-            margin-bottom: 30vh;
-            > h1 { color: var(--color-tertiary); }
-            > h2 { color: var(--color-primary); }
+        @include mobile-only {
+            margin-top: 15vh;
+            .page-section {
+                margin-bottom: 15vh;
+            }
+        }
+        .page-section {
+            h1 { color: var(--color-primary); }
+            h2 { color: var(--color-secondary); }
+            h3 { color: var(--color-tertiary); }
         }
     }
     @include desktop-only {
@@ -32,14 +44,11 @@
 
     .site-header {
         $self: &;
-        @include position-fixed($top: 0, $left: 0);
+        @include position-fixed($top: 0, $left: 0, $z-index: 100);
         @extend %flex,
             %flex--justify-flex-start,
             %flex--align-center;
 
-        @include mobile-only {
-            flex-direction: column;
-        }
 
         &__button {
             @include margin-x(1);
@@ -48,7 +57,7 @@
             cursor: pointer;
             position: relative;
             width: 4rem;
-            height: 2rem;
+            height: 4rem;
 
             &:before, &:after {
                 @include position-absolute($left: 0);
@@ -58,10 +67,10 @@
                 background-color: var(--color-text);
             }
             &:before {
-                top: 0;
+                top: 1rem;
             }
             &:after {
-                bottom: 0;
+                bottom: 1rem;
             }
         }
         &__menu {
@@ -134,12 +143,14 @@
                     %flex--justify-center,
                     %flex--align-center;
     
-                color: var(--color-tertiary);
+                color: var(--color-primary);
+                border-bottom: 2px solid transparent;
+
+                &--active {
+                    border-bottom-color: var(--color-tertiary);
+                }
                 &--highlight {
-                    color: var(--color-primary);
-                    @include mobile-only {
-                        display: none;
-                    }
+                    color: var(--color-secondary);
                 }
                 &__icon {
                     @include margin-right(.5);
@@ -152,7 +163,6 @@
 
         &--show-menu {
             background-color: var(--color-background);
-            z-index: 10;
 
             #{$self}__menu {
                 opacity: 1;

@@ -2,11 +2,10 @@
 
 mixin nav-link(link, label, icon, ...classes)
     -
-        const currLink = `page/`;
-        const className = [...classes, link === currLink ? 'active' : null]
+        const className = [...classes]
             .filter((v) => !!v)
             .map((v) => `${baseNavItem}--${v}`)
             .join(' ');
-    a.col.col--2(href=link, class=`${baseNavItem} ${className}`)&attributes(attributes)
+    a(href=link, data-scroll-to=link, class=`${baseNavItem} ${className}`)&attributes(attributes)
         i(class=`${baseNavItem}__icon ri-${icon}`)
         span(class=`${baseNavItem}__label`)= label

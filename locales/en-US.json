@@ -6,7 +6,7 @@
 	},
 	"index": {
 		"title": "Hi! I'm Kalle",
-		"intro": "I design and develop things at <a href='https://www.fivebyfive.se' class='fivebyfive' rel='noopener nofollow' target='_blank'>Fivebyfive</a>, but also do various kinds of art &mdash; including digital illustrations and paintings. Some of which you can <a class='scroll-link' href='#shop'><i class='ri-shopping-cart-line'></i> buy below</a>.",
+		"intro": "I design and develop things at <a href='https://www.fivebyfive.se' class='fivebyfive' rel='noopener nofollow' target='_blank'>Fivebyfive</a>, but also do various kinds of art &mdash; including digital illustrations and paintings. Some of which you can <a data-scroll-to='#shop' href='#shop'><i class='ri-shopping-cart-line'></i> buy below</a>.",
 		"link-preamble": "If you'd rather hire me to create your next website or app or flyer, visit <a href='https://www.fivebyfive.se' class='fivebyfive' rel='noopener nofollow' target='_blank'>Fivebyfive</a>.",
 		"shop-title": "Here's some stuff I've made:"
 	}

@@ -2,48 +2,66 @@
     const header = document.querySelector('.site-header');
     const menuButton = document.querySelector('.site-header__button');
     const toggleMenu = (force=undefined) => header.classList.toggle('site-header--show-menu', force);
+    const getScrollLinks = () => document.querySelectorAll('[data-scroll-to]');
 
-    document.querySelectorAll('a.nav__item, a.scroll-link').forEach((navItem) => {
+    const setActiveScrollLink = (id) => {
+        const targetSelector = `#${id}`;
+        getScrollLinks().forEach((l) => l.classList.toggle('nav__item--active', l.dataset.scrollTo === targetSelector));
+    };
+
+    getScrollLinks().forEach((navItem) => {
         navItem.addEventListener('click', (ev) => {
-            const href = ev.target.href || ev.target.parentNode.href;
-            if (href && href.indexOf('#') >= 0) {
+            const clickTarget = ev.currentTarget.dataset.scrollTo ? ev.currentTarget : ev.target;
+            if (clickTarget) {
+                const { scrollTo } = clickTarget.dataset;
+                const targetElement = document.getElementById(scrollTo.replace('#', ''));
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                setActiveScrollLink(targetElement.id);    
                 ev.preventDefault();
-                const targetSelector = href.replace(/^.*#(\w+)$/, '$1')
-                const target = document.getElementById(targetSelector);
-                target.scrollIntoView({ behavior: 'smooth' });
-                toggleMenu(false);
             }
-        });
+        })
     });
 
-    menuButton.addEventListener('click', () => toggleMenu());
-})();
-
-(() => {
-    const initFade = () => {
+    const initLinks = () => {
         const downButton = document.querySelector('.down-button--hidden');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const { target } = entry;
-                    if (target.classList.contains('fade-in')) {
-                        target.classList.add('fade-in--visible');
-                        if (target.classList.contains('sprd-header')) {
-                            downButton.classList.add('down-button--hidden');
-                        }
-                    } else if (target.classList.contains('about') || target.classList.contains('site-footer')) {
-                        document.querySelectorAll('.sprd-header').forEach((s) => s.classList.remove('fade-in--visible'));
-                        if (target.classList.contains('about')) {
-                            downButton.classList.remove('down-button--hidden');
-                        }
-                    }
+        const basketContainer = document.querySelector('.sprd-header__actions');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.filter((entry) => entry.isIntersecting).forEach((entry) => {
+                const { target } = entry;
+                if (target.classList.contains('page-section')) {
+                    const isAbout = target.classList.contains('page-section--about');
+                    downButton.classList.toggle('down-button--hidden', !isAbout);
+                    basketContainer.classList.toggle('actions--hidden', isAbout);
+
+                    setActiveScrollLink(target.id);
+                } else {
+                    downButton.classList.toggle('down-button--hidden', true);
+                    basketContainer.classList.toggle('actions--hidden', true);
+                    setActiveScrollLink('');
+                }
+                toggleMenu(false);
+            })
+        }, { threshold: .5 });
+        document.querySelectorAll('.page-section, .site-footer').forEach((s) => observer.observe(s));
+    }
+
+    menuButton.addEventListener('click', () => toggleMenu());
+
+    const initFade = () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.filter((entry) => entry.isIntersecting).forEach(entry => {
+                const { target } = entry;
+                if (target.classList.contains('fade-in')) {
+                    target.classList.add('fade-in--visible');
+                    observer.unobserve(target);
                 }
             });
         }, { threshold: [ .75 ] });
         
 
-        document.querySelectorAll('section.about, .fade-in, .site-footer').forEach((el) => observer.observe(el));    
-        downButton.classList.remove('down-button--hidden');
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+        initLinks();
     };
 
     const waitForSpreadshirt = () => {

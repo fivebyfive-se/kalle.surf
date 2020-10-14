@@ -1,7 +1,7 @@
 extends _layout.pug
 
 block content
-    section.about#about
+    section.page-section.page-section--about#about
         h1= __('index.title')
         p!= __('index.intro')
         p!= __('index.link-preamble')
@@ -10,7 +10,7 @@ block content
         i.ri-shopping-cart-fill
         i.ri-arrow-down-s-line
 
-    section.shop#shop
+    section.page-section.page-section--shop#shop
         h2.fade-in= __('index.shop-title')
         #spreadshop.fade-in
             a(href='https://shop.spreadshirt.se/kallesurf')

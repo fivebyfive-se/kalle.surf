@@ -30,25 +30,28 @@
     }
 
 
-    h1, .heading1 { 
+    h1 { 
         @extend %font--bold, %font--xxx-large;
     }
-    h2, .heading2 { 
+    h2 { 
         @extend %font--bold, %font--xx-large;
     }
-    h3, .heading3 { 
+    h3 { 
         @extend %font--x-large;
     }
-    h4, .heading4 { 
-        @extend %font--large,
-            %font--bold;
-    }
-    h5, .heading5 { 
+    h4 { 
         @extend %font--large;
     }
-
-    pre, code, .mono {
-        @extend %font--monospace;
+    h5{ 
+        @extend %font--large;
+    }
+    @include mobile-only {
+        h1 {
+            @include font($size: xx-large);
+        }
+        h2 {
+            @include font($size: x-large);
+        }
     }
 }
 

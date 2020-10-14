@@ -16,15 +16,15 @@ $settings: (
     ),
 
     color: (
-        text:  #fffefe,
-        text-secondary: #eee,
-        background: #222,
-        background-secondary: #333,
+        background: #070908,
+        background-secondary: #120F0C,
+        text: #A5A68F,
+        text-secondary: #F1F2D0,
 
 
-        primary:#bf5fbf,
-        secondary:  #77bb66,
-        tertiary: #BF9F73,
+        primary: #BA443C,
+        secondary: #ED7634,
+        tertiary: #BA7D16,
 
         success: #218A49,
         error: #8A332F
@@ -61,7 +61,7 @@ $settings: (
             xxx-small: 1
         ),
         line-height: (
-            base: 2.5 // * 1rem
+            base: 3 // * 1rem
         )
     )
 );
