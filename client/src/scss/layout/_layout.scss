@@ -20,6 +20,8 @@
         }
         section {
             margin-bottom: 30vh;
+            > h1 { color: var(--color-tertiary); }
+            > h2 { color: var(--color-primary); }
         }
     }
     @include desktop-only {
